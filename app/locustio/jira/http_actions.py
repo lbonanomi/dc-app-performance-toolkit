@@ -71,9 +71,9 @@ def view_issue(locust):
     r = locust.get(f'/browse/{issue_key}', catch_response=True)
     content = r.content.decode('utf-8')
     issue_id = fetch_by_re(params.issue_id_pattern, content)
-    project_avatar_id = fetch_by_re(params.project_avatar_id_pattern, content)
+    #project_avatar_id = fetch_by_re(params.project_avatar_id_pattern, content)
     edit_allowed = fetch_by_re(params.edit_allow_pattern, content, group_no=0)
-    locust.get(f'/secure/projectavatar?avatarId={project_avatar_id}', catch_response=True)
+    #locust.get(f'/secure/projectavatar?avatarId={project_avatar_id}', catch_response=True)
     # Assertions
     if not(f'<meta name="ajs-issue-key" content="{issue_key}">' in content):
         logger.error(f'Issue {issue_key} not found: {content}')
